@@ -15,8 +15,8 @@ get_bls_info <- function(series_ids='LAUCN040010000000005', registration_key=NA)
     url <- 'http://api.bls.gov/publicAPI/v2/timeseries/data/'
 
     # Convert `series_ids` into a list
-    if (class(series_ids) != 'list'){
-        series_ids <- list(series_ids)
+    if (length(series_ids) < 2) {
+      series_ids <- list(series_ids)
     }
 
     # Check registration_key
