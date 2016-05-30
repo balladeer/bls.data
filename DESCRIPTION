@@ -1,0 +1,9 @@
+Package: bls.data
+Title: Retrieve data from BLS's public API
+Version: 0.0.0.1
+Authors@R: person("Zachary", "Cross", email = "zachary.t.cross@gmail.com", role = c("aut", "cre"))
+Description: Query US Bureau of Labor Statistics' public API for data.
+Depends: R (>= 3.3.0)
+License: MIT
+Encoding: UTF-8
+LazyData: true
