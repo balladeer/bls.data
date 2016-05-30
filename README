@@ -1,0 +1,10 @@
+Working on a package to make querying data from the BLS public API in R a bit easier.
+
+TODO:
+* Add multi-series support to get_bls_data()
+* Add optional argument support to get_bls_data()
+* Add input validation
+* Add response validation
+* Add some tests
+
+During all of the above steps: improve documentation.
