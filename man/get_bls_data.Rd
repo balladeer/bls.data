@@ -4,7 +4,7 @@
 \alias{get_bls_data}
 \title{Get data from the BLS public API.}
 \usage{
-get_bls_data(series_id = "LAUCN040010000000005")
+get_bls_data(series_ids = "LAUCN040010000000005", registration_key = NA)
 }
 \arguments{
 \item{series_id}{input character vector}
@@ -16,7 +16,7 @@ data.frame with data for the requested series id.
 Get data from the BLS public API.
 }
 \examples{
-get_bls_data()
-get_bls_data('LAUCN040010000000005')
+get_bls_data(registration_key='BLS-provided key')
+get_bls_data('LAUCN040010000000005', registration_key='BLS-provided key')
 }
 
