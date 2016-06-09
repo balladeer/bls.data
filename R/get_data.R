@@ -16,7 +16,7 @@ get_bls_data <- function(series_ids='LAUCN040010000000005', registration_key=NA)
         series_ids <- list(series_ids)
     }
 
-    # Check registration_key
+    # Check registration_key is provided
     if (class(registration_key) == 'logical') {
         stop('argument registration_key required')
     }
@@ -29,6 +29,7 @@ get_bls_data <- function(series_ids='LAUCN040010000000005', registration_key=NA)
     if (length(c$message) > 0) {
         stop(c$message)
     }
+
     final_df <- NA
     first = TRUE
     for (current in c$Results$series) {
@@ -46,5 +47,9 @@ get_bls_data <- function(series_ids='LAUCN040010000000005', registration_key=NA)
         }
         first = FALSE
     }
+
+    # Make sure series_id columns are in same relative order
+    final_df <- final_df[, c('year', 'period', 'periodName', series_ids)]
+
     return(final_df)
 }
