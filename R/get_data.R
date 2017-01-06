@@ -8,8 +8,9 @@ library(httr)
 #' @examples
 #' get_bls_data(registration_key='BLS-provided key')
 #' get_bls_data('LAUCN040010000000005', registration_key='BLS-provided key')
+#' get_bls_data(c("LAUCN040010000000005", "LAUCN040010000000006"), registration_key='BLS-provided key')
 get_bls_data <- function(series_ids='LAUCN040010000000005', registration_key=NA) {
-    url <- 'http://api.bls.gov/publicAPI/v2/timeseries/data/'
+    url <- 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 
     # Convert `series_ids` into a list
     if (length(series_ids) < 2) {
