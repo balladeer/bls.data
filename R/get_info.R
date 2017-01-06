@@ -12,7 +12,7 @@ library(rjson)
 #' get_bls_info()
 #' get_bls_info(series_id=c("LAUCN040010000000005", "LAUCN040010000000006"))
 get_bls_info <- function(series_ids='LAUCN040010000000005', registration_key=NA) {
-    url <- 'http://api.bls.gov/publicAPI/v2/timeseries/data/'
+    url <- 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 
     # Convert `series_ids` into a list
     if (length(series_ids) < 2) {
