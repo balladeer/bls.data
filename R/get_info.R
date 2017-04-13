@@ -29,7 +29,8 @@ get_bls_info <- function(series_ids='LAUCN040010000000005', registration_key=NA)
 
     c <- httr::content(response)
 
-    if (length(c$message) > 0) {
+    if (c$status != "REQUEST_SUCCEEDED") {
+        print(c$status)
         stop(c$message)
     }
 

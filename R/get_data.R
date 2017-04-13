@@ -51,8 +51,8 @@ get_bls_data <- function(series_ids='LAUCN040010000000005', registration_key=NA)
     }
 
     # Make sure series_id columns are in same relative order
-    if (length(series_ids) < 2) {
-        final_df <- final_df[, c('year', 'period', 'periodName', series_ids[[1]])]
+    if (length(series_ids) >= 2) {
+        final_df <- final_df[, c('year', 'period', 'periodName', series_ids)]
     }
 
     return(final_df)
