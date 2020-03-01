@@ -9,7 +9,6 @@ Both functions have a `registration_key` argument.  You must request a key from 
 
 TODO:
 
-* Add optional argument support to get_bls_data() (e.g. start_year, end_year, etc)
 * Add input validation
 * Add response validation
 * Add some tests
