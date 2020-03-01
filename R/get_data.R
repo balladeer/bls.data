@@ -12,6 +12,8 @@ require(httr)
 #' get_bls_data(registration_key='BLS-provided key')
 #' get_bls_data('LAUCN040010000000005', registration_key='BLS-provided key')
 #' get_bls_data(c("LAUCN040010000000005", "LAUCN040010000000006"), registration_key='BLS-provided key')
+#' get_bls_data(registration_key='BLS-provided key', start_year=2010)
+#' get_bls_data(registration_key='BLS-provided key', start_year=2010, end_year=2020)
 get_bls_data <- function(
     series_ids='LAUCN040010000000005',
     registration_key=NA,
