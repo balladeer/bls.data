@@ -1,15 +1,22 @@
-library(httr)
+require(httr)
 
 #' Get data from the BLS public API.
 #'
-#' @param series_id input character vector
+#' @param series_ids vector of series ids
+#' @param registration_key BLS API registration key as a character vector
+#' @param start_year year to start getting data, inclusive
+#' @param end_year year to stop getting data, exclusive
 #' @return data.frame with data for the requested series id.
 #' @export
 #' @examples
 #' get_bls_data(registration_key='BLS-provided key')
 #' get_bls_data('LAUCN040010000000005', registration_key='BLS-provided key')
 #' get_bls_data(c("LAUCN040010000000005", "LAUCN040010000000006"), registration_key='BLS-provided key')
-get_bls_data <- function(series_ids='LAUCN040010000000005', registration_key=NA) {
+get_bls_data <- function(
+    series_ids='LAUCN040010000000005',
+    registration_key=NA,
+    start_year=NA,
+    end_year=NA) {
     url <- 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 
     # Convert `series_ids` into a list
@@ -22,13 +29,36 @@ get_bls_data <- function(series_ids='LAUCN040010000000005', registration_key=NA)
         stop('argument registration_key required')
     }
 
-    body_list = list(seriesid = series_ids, registrationKey=registration_key)
-    response = httr::POST(url, body=rjson::toJSON(body_list), config=add_headers('content-type'='application/json'))
+    body_list = list(
+        seriesid = series_ids,
+        registrationKey=registration_key,
+        )
+
+    if (!is.na(start_year)){
+        body_list['startyear'] = start_year
+    }
+
+    if (!is.na(end_year)){
+        body_list['endyear'] = end_year
+    }
+
+    response = httr::POST(
+        url,
+        body=rjson::toJSON(body_list),
+        config=httr::add_headers('content-type'='application/json')
+        )
 
     c <- httr::content(response)
 
+    print(c$status)
+    print(c$responseTime)
+
+    if (length(c$message) > 0) {
+        print("Message from BLS api:")
+        print(c$message)
+    }
+
     if (c$status != "REQUEST_SUCCEEDED") {
-        print(c$status)
         stop(c$message)
     }
 

@@ -8,6 +8,8 @@ get_bls_info(series_ids = "LAUCN040010000000005", registration_key = NA)
 }
 \arguments{
 \item{series_ids}{input character vector}
+
+\item{registration_key}{BLS API registration key as a character vector}
 }
 \value{
 nested list with series ids as top-level named elements
@@ -19,4 +21,3 @@ You mush supply a registration_key
 get_bls_info()
 get_bls_info(series_id=c("LAUCN040010000000005", "LAUCN040010000000006"))
 }
-

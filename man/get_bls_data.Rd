@@ -4,9 +4,20 @@
 \alias{get_bls_data}
 \title{Get data from the BLS public API.}
 \usage{
-get_bls_data(series_ids = "LAUCN040010000000005", registration_key = NA)
+get_bls_data(
+  series_ids = "LAUCN040010000000005",
+  registration_key = NA,
+  start_year = NA,
+  end_year = NA
+)
 }
 \arguments{
+\item{registration_key}{BLS API registration key as a character vector}
+
+\item{start_year}{year to start getting data, inclusive}
+
+\item{end_year}{year to stop getting data, exclusive}
+
 \item{series_id}{input character vector}
 }
 \value{
@@ -18,5 +29,7 @@ Get data from the BLS public API.
 \examples{
 get_bls_data(registration_key='BLS-provided key')
 get_bls_data('LAUCN040010000000005', registration_key='BLS-provided key')
+get_bls_data(c("LAUCN040010000000005", "LAUCN040010000000006"), registration_key='BLS-provided key')
+get_bls_Data(registration_key='BLS-provided key', start_year=2010)
+get_bls_Data(registration_key='BLS-provided key', start_year=2010, end_year=2020)
 }
-

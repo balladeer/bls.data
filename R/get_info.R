@@ -1,11 +1,12 @@
-library(httr)
-library(rjson)
+require(httr)
+require(rjson)
 
 #' Get descriptive information about a BLS SeriesID.
 #'
 #' You mush supply a registration_key
 #'
 #' @param series_ids input character vector
+#' @param registration_key BLS API registration key as a character vector
 #' @return nested list with series ids as top-level named elements
 #' @export
 #' @examples
