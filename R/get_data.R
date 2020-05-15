@@ -33,7 +33,7 @@ get_bls_data <- function(
 
     body_list = list(
         seriesid = series_ids,
-        registrationKey=registration_key,
+        registrationKey=registration_key
         )
 
     if (!is.na(start_year)){
